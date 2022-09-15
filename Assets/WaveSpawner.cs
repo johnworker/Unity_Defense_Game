@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using TMPro;
 
 namespace Leo
 {
@@ -12,6 +14,8 @@ namespace Leo
         public float timeBetweenWaves = 5f;
         private float countdown = 2f;
 
+        public TextMeshProUGUI waveCountdownText;
+
         private int waveIndex = 0;
 
         void Update()
@@ -23,6 +27,7 @@ namespace Leo
             }
 
             countdown -= Time.deltaTime;
+            waveCountdownText.text = Mathf.Floor(countdown).ToString();
         }
 
         IEnumerator SpawnWave()
