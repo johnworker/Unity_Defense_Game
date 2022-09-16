@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Leo
@@ -11,16 +10,25 @@ namespace Leo
         /// </summary>
         [Header("建塔偵測目標")]
         private Transform target;
+
+        [Header("屬性")]
+
         [Header("建塔偵測範圍")]
         public float range = 15f;
+        public float fireRate = 1f;
+        private float fireCountdown = 0f;
+
+        [Header("Unity設置字段")]
 
         [Header("標籤敵人")]
         public string enemyTag = "Enemy";
 
         [Header("建塔旋轉轉檯")]
         public Transform partToRotate;
-
+        [Header("建塔旋轉轉檯速度")]
         public float turnSpeed = 10f;
+
+
 
         void Start()
         {
@@ -64,9 +72,22 @@ namespace Leo
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotation = Quaternion.Lerp(partToRotate.rotation,lookRotation,Time.deltaTime * turnSpeed).eulerAngles;
             partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+            if(fireCountdown <= 0f)
+            {
+                Shoot();
+                fireCountdown = 1f / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
         }
 
-        private void OnDrawGizmosSelected()
+        void Shoot()
+        {
+            Debug.Log("SHOOT!");
+        }
+
+        void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, range);
