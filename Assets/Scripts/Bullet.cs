@@ -42,7 +42,9 @@ namespace Leo
             GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effectIns, 2f);
 
+            // ®ø·À¼Ä¤H
             Destroy(target.gameObject);
+
             Destroy(gameObject);
         }
     }
