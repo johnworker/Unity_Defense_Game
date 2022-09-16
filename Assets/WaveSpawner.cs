@@ -27,7 +27,7 @@ namespace Leo
             }
 
             countdown -= Time.deltaTime;
-            waveCountdownText.text = Mathf.Floor(countdown).ToString();
+            waveCountdownText.text = Mathf.Round(countdown).ToString();
         }
 
         IEnumerator SpawnWave()
