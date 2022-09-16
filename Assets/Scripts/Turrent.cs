@@ -28,7 +28,9 @@ namespace Leo
         [Header("建塔旋轉轉檯速度")]
         public float turnSpeed = 10f;
 
-
+        [Header("子彈")]
+        public GameObject bulletPrefab;
+        public Transform firePoint;
 
         void Start()
         {
@@ -84,7 +86,11 @@ namespace Leo
 
         void Shoot()
         {
-            Debug.Log("SHOOT!");
+            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+            if (bullet != null)
+                bullet.Seek(target);
         }
 
         void OnDrawGizmosSelected()
