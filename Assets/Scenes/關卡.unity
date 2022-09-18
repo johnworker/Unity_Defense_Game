@@ -3704,7 +3704,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 60}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &578299305
 MonoBehaviour:
@@ -3719,7 +3719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3782,6 +3782,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab67f9166bd4ae4f9b62a8b74331386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standardTurret:
+    prefab: {fileID: 7960694747284678047, guid: 3c9348630c7fc1148a15f877350a8869, type: 3}
+    cost: 100
+  missileLauncher:
+    prefab: {fileID: 7514441838009310335, guid: 07fc5fbab9c76b2468d5a1fbfa769932, type: 3}
+    cost: 250
 --- !u!1001 &582667985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12246,7 +12252,7 @@ PrefabInstance:
       objectReference: {fileID: 578299308}
     - target: {fileID: 2167819584097691385, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseMissileLauncher
+      value: SelectMissileLauncher
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_Pivot.x
@@ -12278,11 +12284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12795,6 +12801,7 @@ GameObject:
   - component: {fileID: 1801939561}
   - component: {fileID: 1801939562}
   - component: {fileID: 1801939563}
+  - component: {fileID: 1801939564}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -12847,6 +12854,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 7960694747284678047, guid: 3c9348630c7fc1148a15f877350a8869, type: 3}
   missileLauncherPrefab: {fileID: 7514441838009310335, guid: 07fc5fbab9c76b2468d5a1fbfa769932, type: 3}
+--- !u!114 &1801939564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801939560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2fa61651121e7479338924f1a4ad5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1826260421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6911497302961663799, guid: 8c83a15efd3219a418bb5551d0286871, type: 3}
@@ -15415,6 +15434,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 578299308}
+    - target: {fileID: 2167819584097691385, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectStandardTurret
+      objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15445,11 +15468,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2167819584097691386, guid: 70f204c5ab81c0b45947463932b64da9, type: 3}
       propertyPath: m_LocalPosition.x

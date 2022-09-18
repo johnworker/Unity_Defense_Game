@@ -9,7 +9,8 @@ namespace Leo
         public Color hoverColor;
         public Vector3 positionOffset;
 
-        private GameObject turret;
+        [Header("選單")]
+        public GameObject turret;
 
         private Renderer rend;
         private Color startColor;
@@ -24,9 +25,14 @@ namespace Leo
             buildManager = BuildManager.instance;
         }
 
+        public Vector3 GetBuildPosition()
+        {
+            return transform.position + positionOffset;
+        }
+
         void OnMouseDown()
         {
-            if (buildManager.GetTurretToBuild() == null)
+            if (!buildManager.CanBuild)
                 return;
 
             if(turret != null)
@@ -35,9 +41,7 @@ namespace Leo
                 return;
             }
 
-            // 建立防禦塔
-            GameObject turretToBuild = buildManager.GetTurretToBuild();
-            turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+            buildManager.BuildTurretOn(this);
         }
 
         void OnMouseEnter()
@@ -45,7 +49,7 @@ namespace Leo
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if (buildManager.GetTurretToBuild() == null)
+            if (!buildManager.CanBuild)
                 return;
             rend.material.color = hoverColor;
         }
