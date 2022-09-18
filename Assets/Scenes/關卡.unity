@@ -5744,6 +5744,7 @@ GameObject:
   - component: {fileID: 881439600}
   - component: {fileID: 881439602}
   - component: {fileID: 881439601}
+  - component: {fileID: 881439603}
   m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
@@ -5868,6 +5869,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881439599}
   m_CullTransparentMesh: 1
+--- !u!114 &881439603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881439599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98baef318ac1104192531fb355b2d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livesText: {fileID: 881439601}
 --- !u!1001 &909314032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13230,6 +13244,7 @@ GameObject:
   - component: {fileID: 1801939562}
   - component: {fileID: 1801939563}
   - component: {fileID: 1801939564}
+  - component: {fileID: 1801939565}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -13266,7 +13281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7482923115814912693, guid: 951c75a0dc6993a47828a5993b2904d5, type: 3}
   spawnPoint: {fileID: 2071823870}
-  timeBetweenWaves: 20
+  timeBetweenWaves: 10
   waveCountdownText: {fileID: 73212052}
 --- !u!114 &1801939563
 MonoBehaviour:
@@ -13296,7 +13311,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 400
-  startLives: 20
+  startLives: 1
+--- !u!114 &1801939565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801939560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f967dfab089104c934c3630ffcd5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1826260421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6911497302961663799, guid: 8c83a15efd3219a418bb5551d0286871, type: 3}
