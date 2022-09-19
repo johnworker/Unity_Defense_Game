@@ -16,9 +16,6 @@ namespace Leo
             instance = this;
         }
 
-        public GameObject standardTurretPrefab;
-
-        public GameObject missileLauncherPrefab;
 
         public GameObject buildEffect;
 

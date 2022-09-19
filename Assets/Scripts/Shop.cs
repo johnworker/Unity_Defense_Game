@@ -7,6 +7,7 @@ namespace Leo
 
         public TurretBlueprint standardTurret;
         public TurretBlueprint missileLauncher;
+        public TurretBlueprint laserBeamer;
 
         BuildManager buildManager;
 
@@ -25,6 +26,12 @@ namespace Leo
         {
             Debug.Log("Missile Launcher Selected");
             buildManager.SelectTurretToBuild(missileLauncher);
+        }
+
+        public void SelectLaserBeamer()
+        {
+            Debug.Log("Missile Launcher Selected");
+            buildManager.SelectTurretToBuild(laserBeamer);
         }
 
     }

@@ -11,12 +11,19 @@ namespace Leo
         [Header("建塔偵測目標")]
         private Transform target;
 
-        [Header("屬性")]
+        [Header("一般")]
 
         [Header("建塔偵測範圍")]
         public float range = 15f;
+
+        [Header("使用子彈(預設)")]
+        public GameObject bulletPrefab;
         public float fireRate = 1f;
         private float fireCountdown = 0f;
+
+        [Header("使用激光")]
+        public bool useLaser = false;
+        public LineRenderer lineRenderer;
 
         [Header("Unity設置字段")]
 
@@ -29,7 +36,6 @@ namespace Leo
         public float turnSpeed = 10f;
 
         [Header("子彈")]
-        public GameObject bulletPrefab;
         public Transform firePoint;
 
         void Start()
@@ -66,22 +72,53 @@ namespace Leo
 
         void Update()
         {
-            if (target == null)
+            if (target == null) {
+
+                if (useLaser) {
+                    if (lineRenderer.enabled)
+                        lineRenderer.enabled = false;
+
+                }
+
                 return;
+            }
+                
 
-            
-            Vector3 dir = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.Lerp(partToRotate.rotation,lookRotation,Time.deltaTime * turnSpeed).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            LockOnTarget();
 
-            if(fireCountdown <= 0f)
+            if (useLaser)
             {
-                Shoot();
-                fireCountdown = 1f / fireRate;
+                Laser();
+            }
+            else {
+
+                if (fireCountdown <= 0f)
+                {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+
+                fireCountdown -= Time.deltaTime;
+
             }
 
-            fireCountdown -= Time.deltaTime;
+        }
+
+        void LockOnTarget() {
+
+            Vector3 dir = target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        }
+
+        void Laser() {
+            if (!lineRenderer.enabled)
+                lineRenderer.enabled = true;
+
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, target.position);
         }
 
         void Shoot()
