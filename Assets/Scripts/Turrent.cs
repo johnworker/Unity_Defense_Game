@@ -24,6 +24,7 @@ namespace Leo
         [Header("使用激光")]
         public bool useLaser = false;
         public LineRenderer lineRenderer;
+        public ParticleSystem impactEffect;
 
         [Header("Unity設置字段")]
 
@@ -115,7 +116,10 @@ namespace Leo
 
         void Laser() {
             if (!lineRenderer.enabled)
+            {
                 lineRenderer.enabled = true;
+                impactEffect.Play();
+            }             
 
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, target.position);
