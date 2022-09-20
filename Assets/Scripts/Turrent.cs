@@ -10,6 +10,7 @@ namespace Leo
         /// </summary>
         [Header("建塔偵測目標")]
         private Transform target;
+        private Enemy targetEnemy;
 
         [Header("一般")]
 
@@ -23,8 +24,13 @@ namespace Leo
 
         [Header("使用激光")]
         public bool useLaser = false;
+
+        public int damageOverTime = 30;
+        public float slowAmount = .5f;
+
         public LineRenderer lineRenderer;
         public ParticleSystem impactEffect;
+        public Light impactLight;
 
         [Header("Unity設置字段")]
 
@@ -64,6 +70,7 @@ namespace Leo
             if(nearestEnemy != null && shootestDistance <= range)
             {
                 target = nearestEnemy.transform;
+                targetEnemy = nearestEnemy.GetComponent<Enemy>();
             }
             else
             {
@@ -77,7 +84,11 @@ namespace Leo
 
                 if (useLaser) {
                     if (lineRenderer.enabled)
+                    {
                         lineRenderer.enabled = false;
+                        impactEffect.Stop();
+                        impactLight.enabled = false;
+                    }
 
                 }
 
@@ -115,14 +126,25 @@ namespace Leo
         }
 
         void Laser() {
+
+            targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+            targetEnemy.Slow(slowAmount);
+
             if (!lineRenderer.enabled)
             {
                 lineRenderer.enabled = true;
                 impactEffect.Play();
+                impactLight.enabled = true;
             }             
 
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, target.position);
+
+            Vector3 dir = firePoint.position - target.position;
+
+            impactEffect.transform.position = target.position + dir.normalized;
+
+            impactEffect.transform.rotation = Quaternion.LookRotation(dir);
         }
 
         void Shoot()
