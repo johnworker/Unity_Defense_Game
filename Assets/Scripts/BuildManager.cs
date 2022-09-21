@@ -20,6 +20,7 @@ namespace Leo
         public GameObject buildEffect;
 
         private TurretBlueprint turretToBuild;
+        private Node selectedNode;
 
         public bool CanBuild { get { return turretToBuild != null; } }
         public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
@@ -44,9 +45,16 @@ namespace Leo
             Debug.Log("turret build! Money lfet:" + PlayerStats.Money);
         }
 
+        public void SelectNode(Node node)
+        {
+            selectedNode = node;
+            turretToBuild = null;
+        }
+
         public void SelectTurretToBuild(TurretBlueprint turret)
         {
             turretToBuild = turret;
+            selectedNode = null;
         }
     }
 

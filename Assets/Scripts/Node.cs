@@ -33,7 +33,7 @@ namespace Leo
 
         void OnMouseDown()
         {
-            if (!buildManager.CanBuild)
+            if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
             if(turret != null)
@@ -41,6 +41,9 @@ namespace Leo
                 Debug.Log("Can't build there! - TODO: Display on screen");
                 return;
             }
+
+            if (!buildManager.CanBuild)
+                return;
 
             buildManager.BuildTurretOn(this);
         }
