@@ -7787,7 +7787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &977833815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15626,6 +15626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1296966058311266238, guid: 24f043a4653ced54e84423e3209abbb5, type: 3}
+  nodeUI: {fileID: 1895196941}
 --- !u!114 &1801939564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15865,6 +15866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1895196940}
+  - component: {fileID: 1895196941}
   m_Layer: 0
   m_Name: NodeUI
   m_TagString: Untagged
@@ -15888,6 +15890,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1895196941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895196939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ea933f47641dd40bcf0804ed115389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 977833814}
 --- !u!1001 &1912146262
 PrefabInstance:
   m_ObjectHideFlags: 0

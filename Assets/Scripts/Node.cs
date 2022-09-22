@@ -38,7 +38,7 @@ namespace Leo
 
             if(turret != null)
             {
-                Debug.Log("Can't build there! - TODO: Display on screen");
+                buildManager.SelectNode(this);
                 return;
             }
 

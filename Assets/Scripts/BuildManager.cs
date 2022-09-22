@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Leo
 {
@@ -21,6 +22,8 @@ namespace Leo
 
         private TurretBlueprint turretToBuild;
         private Node selectedNode;
+
+        public NodeUI nodeUI;
 
         public bool CanBuild { get { return turretToBuild != null; } }
         public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
@@ -49,12 +52,16 @@ namespace Leo
         {
             selectedNode = node;
             turretToBuild = null;
+
+            nodeUI.SetTarget(node);
         }
 
         public void SelectTurretToBuild(TurretBlueprint turret)
         {
             turretToBuild = turret;
             selectedNode = null;
+
+            nodeUI.Hide();
         }
     }
 
