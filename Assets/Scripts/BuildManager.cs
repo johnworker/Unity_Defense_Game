@@ -50,18 +50,29 @@ namespace Leo
 
         public void SelectNode(Node node)
         {
+            if(selectedNode == node)
+            {
+                DeselectNode();
+                return;
+            }
+
             selectedNode = node;
             turretToBuild = null;
 
             nodeUI.SetTarget(node);
         }
 
+        public void DeselectNode()
+        {
+            selectedNode = null;
+            nodeUI.Hide();
+        }
+
         public void SelectTurretToBuild(TurretBlueprint turret)
         {
             turretToBuild = turret;
-            selectedNode = null;
 
-            nodeUI.Hide();
+            DeselectNode();
         }
     }
 
