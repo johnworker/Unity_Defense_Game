@@ -12,6 +12,8 @@ namespace Leo
         public TextMeshProUGUI upgradeCost;
         public Button upgradeButton;
 
+        public TextMeshProUGUI sellAmount;
+
         private Node target;
 
         public void SetTarget(Node _target)
@@ -31,6 +33,8 @@ namespace Leo
                 upgradeButton.interactable = false;
             }
 
+            sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
+
             ui.SetActive(true);
         }
 
@@ -43,6 +47,12 @@ namespace Leo
         {
             target.UpgradeTurret();
 
+            BuildManager.instance.DeselectNode();
+        }
+
+        public void Sell()
+        {
+            target.SellTurret();
             BuildManager.instance.DeselectNode();
         }
     }

@@ -4849,13 +4849,13 @@ MonoBehaviour:
   missileLauncher:
     prefab: {fileID: 7514441838009310335, guid: 07fc5fbab9c76b2468d5a1fbfa769932, type: 3}
     cost: 250
-    upgradedPrefab: {fileID: 0}
-    upgradeCost: 0
+    upgradedPrefab: {fileID: 7514441838009310335, guid: 946e9c0cadd1d804f91a4d9acaa0a4ee, type: 3}
+    upgradeCost: 150
   laserBeamer:
     prefab: {fileID: 2474303076949866728, guid: bca40f3ad6860284f993552ea1372347, type: 3}
     cost: 350
-    upgradedPrefab: {fileID: 0}
-    upgradeCost: 0
+    upgradedPrefab: {fileID: 2474303076949866728, guid: a9f0e9774ca219041a6e3a380e395e6b, type: 3}
+    upgradeCost: 200
 --- !u!1001 &582667985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6530,7 +6530,7 @@ GameObject:
   - component: {fileID: 827722094}
   - component: {fileID: 827722093}
   m_Layer: 0
-  m_Name: Cost
+  m_Name: Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6576,7 +6576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '$50
+  m_text: '$125
 
 '
   m_isRightToLeft: 0
@@ -15679,6 +15679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 1296966058311266238, guid: 24f043a4653ced54e84423e3209abbb5, type: 3}
+  sellEffect: {fileID: 6925252499752261985, guid: 9f194f47c9d479d46a8cb5e519671ba9, type: 3}
   nodeUI: {fileID: 1895196941}
 --- !u!114 &1801939564
 MonoBehaviour:
@@ -15692,7 +15693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2fa61651121e7479338924f1a4ad5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 400
+  startMoney: 1000
   startLives: 1
 --- !u!114 &1801939565
 MonoBehaviour:
@@ -15799,7 +15800,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1895196941}
         m_TargetAssemblyTypeName: Leo.NodeUI, Assembly-CSharp
-        m_MethodName: Upgrade
+        m_MethodName: Sell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16230,6 +16231,7 @@ MonoBehaviour:
   ui: {fileID: 977833814}
   upgradeCost: {fileID: 2102615003}
   upgradeButton: {fileID: 1081252972}
+  sellAmount: {fileID: 827722093}
 --- !u!1001 &1912146262
 PrefabInstance:
   m_ObjectHideFlags: 0
