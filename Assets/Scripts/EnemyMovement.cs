@@ -45,6 +45,7 @@ namespace Leo
         void EndPath()
         {
             PlayerStats.Lives--;
+            WaveSpawner.EnemiesAlive--;
             Destroy(gameObject);
         }
 
