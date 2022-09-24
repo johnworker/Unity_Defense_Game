@@ -9,6 +9,10 @@ namespace Leo
     {
         public TextMeshProUGUI roundsText;
 
+        public string menuSceneName = "MainMenu";
+
+        public SceneFader sceneFader;
+
         void OnEnable()
         {
             roundsText.text = PlayerStats.Rounds.ToString();
@@ -16,12 +20,12 @@ namespace Leo
 
         public void Retry()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            sceneFader.FadeTo(SceneManager.GetActiveScene().name);
         }
 
         public void Menu()
         {
-            Debug.Log("Go To Menu");
+            sceneFader.FadeTo(menuSceneName);
         }
     }
 
